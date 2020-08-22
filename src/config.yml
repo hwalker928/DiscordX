@@ -1,0 +1,15 @@
+botToken: "TokenGoesHere"
+punishmentEnabled: true
+punishmentChannel: 000000000000000000
+chatEnabled: true
+chatChannel: 000000000000000000
+minecraftToDiscord: "%rank% %player%: %message%"
+discordToMinecraft: "%player%: %message%"
+commandWatcherEnabled: true
+commandWatcherChannel: 000000000000000000
+oreEnabled: true
+oreChannel: 000000000000000000
+botStatusEnabled: true
+botType: "playing"
+botStatus: "with DiscordLink"
+botPrefix: "!"
