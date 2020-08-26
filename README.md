@@ -10,9 +10,9 @@ A plugin to link minecraft servers with discord.
 
 - Command executed
 
-- Server started and stopped
+- *Server started and stopped*
 
-- Join/Leave messages
+- *Join/Leave messages*
 
 # How to configure
 You can enable or disable all features of the plugin, depending on your needs. 
