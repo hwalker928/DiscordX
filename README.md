@@ -19,8 +19,10 @@ You can enable or disable all features of the plugin, depending on your needs.
 
 # FAQ
 Do I need to host the discord bot?
+
 No! The plugin will host it for you on the minecraft server.
 
 Help! It keeps throwing out errors on start!
+
 Make sure you have changed the needed values in the config. If this keeps on happening, join our discord and we can help you out there!
 
