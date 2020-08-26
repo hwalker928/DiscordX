@@ -21,7 +21,7 @@ No! The plugin will host it for you on the minecraft server.
 
 **Help! It keeps throwing out errors on start!**
 
-Make sure you have changed the needed values in the config. If this keeps on happening, join our discord and we can help you out there, or open an issue on our GitHub, this can be found here https://github.com/hwalker928/DiscordLink/issues
+Make sure you have changed the needed values in the config. If this keeps on happening, join our discord and we can help you out there, or open an issue on our GitHub, this can be found [here](https://github.com/hwalker928/DiscordLink/issues)
 
 **How do I enable/disable certain features of the plugin?**
 
