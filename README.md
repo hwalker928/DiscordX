@@ -33,5 +33,5 @@ All options can be found in /plugins/DiscordLink/config.yml. Make sure to also a
 
 # Contributors
 
-- (hwalker928)[https://harrydev.me/github]
-- (PhoenixTheDev)[https://github.com/PhoenixTheDev]
+- [hwalker928](https://harrydev.me/github)
+- [PhoenixTheDev](https://github.com/PhoenixTheDev)
