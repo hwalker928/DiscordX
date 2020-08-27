@@ -14,6 +14,10 @@ A plugin to link minecraft servers with discord.
 
 - *Join/Leave messages*
 
+- *LiteBans announcements*
+
+- *NoCheatPlus alerts*
+
 # FAQ
 **Do I need to host the discord bot?**
 
