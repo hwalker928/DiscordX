@@ -30,3 +30,8 @@ Make sure you have changed the needed values in the config. If this keeps on hap
 **How do I enable/disable certain features of the plugin?**
 
 All options can be found in /plugins/DiscordLink/config.yml. Make sure to also add the channel ID and any other options that may be needed for the plugin to operate correctly. 
+
+# Contributors
+
+- (hwalker928)[https://harrydev.me/github]
+- (PhoenixTheDev)[https://github.com/PhoenixTheDev]
