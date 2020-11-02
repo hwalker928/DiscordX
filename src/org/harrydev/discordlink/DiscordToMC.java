@@ -22,7 +22,8 @@ public class DiscordToMC extends ListenerAdapter {
 
     @Override
     public void onMessageReceived(MessageReceivedEvent e) {
-        if(!(e.getAuthor().getId().equals("745576018936332338"))) {
+        boolean isBot = e.getAuthor().isBot();
+        if(!(isBot)) {
             if (e.getChannel().getId().equals(config.getString("chatChannel"))) {
                 if(!(e.getMessage().getContentStripped().equals(""))) {
                     Bukkit.broadcastMessage(Objects.requireNonNull(config.getString("discordToMinecraft")).replace("%player%", e.getAuthor().getName()).replace("%message%", e.getMessage().getContentStripped()));

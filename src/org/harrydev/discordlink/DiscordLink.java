@@ -3,6 +3,7 @@ package org.harrydev.discordlink;
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.JDABuilder;
 import net.dv8tion.jda.api.entities.Activity;
+import net.dv8tion.jda.api.entities.TextChannel;
 import net.milkbowl.vault.permission.Permission;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.RegisteredServiceProvider;
@@ -13,12 +14,8 @@ import java.util.Objects;
 
 public class DiscordLink extends JavaPlugin {
 
-    private static Permission perms = null;
-
     @Override
     public void onEnable() {
-
-        setupPermissions();
 
         saveDefaultConfig();
         if(Objects.equals(getConfig().getString("botToken"), "TokenGoesHere")) {
@@ -54,9 +51,6 @@ public class DiscordLink extends JavaPlugin {
             Bukkit.getConsoleSender().sendMessage("An error occurred.");
         }
         assert jda != null;
-        if(getConfig().getBoolean("punishmentEnabled")) {
-            getServer().getPluginManager().registerEvents(new PunishmentListener(jda, this), this);
-        }
         if(getConfig().getBoolean("chatEnabled")) {
             getServer().getPluginManager().registerEvents(new MCToDiscord(jda, this), this);
             //getServer().getPluginManager().registerEvents(new DiscordToMC(this), this);
@@ -66,21 +60,22 @@ public class DiscordLink extends JavaPlugin {
             //getServer().getPluginManager().registerEvents(new DiscordToMC(this), this);
         }
         if(getConfig().getBoolean("oreEnabled")) {
-            getServer().getPluginManager().registerEvents(new OreAlert(jda, this), this);
+            getServer().getPluginManager().registerEvents(new O reAlert(jda, this), this);
             //getServer().getPluginManager().registerEvents(new DiscordToMC(this), this);
         }
 
+        TextChannel textChannel = jda.getTextChannelById(getConfig().getLong("chatChannel"));
+        assert textChannel != null;
+        textChannel.sendMessage(":white_check_mark: The server has started.").queue();
+
     }
 
-    private boolean setupPermissions() {
-        RegisteredServiceProvider<Permission> rsp = getServer().getServicesManager().getRegistration(Permission.class);
-        assert rsp != null;
-        perms = rsp.getProvider();
-        return true;
+    @Override
+    public void onDisable() {
+        TextChannel textChannel = this.bot.getTextChannelById(getConfig().getLong("chatChannel"));
+        assert textChannel != null;
+        textChannel.sendMessage(":octagonal_sign: The server has started.").queue();
     }
 
-    public static Permission getPermissions() {
-        return perms;
-    }
 
 }

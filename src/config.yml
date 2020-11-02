@@ -1,15 +1,31 @@
+# ==================
+# DiscordX
+# ==================
+
+# Please note, if you have NOT changed this,
+# the plugin will kick out errors.
+
+# You can obtain this from
+# https://discord.com/developers
 botToken: "TokenGoesHere"
-punishmentEnabled: true
-punishmentChannel: 000000000000000000
+
+# The Chat module
 chatEnabled: true
 chatChannel: 000000000000000000
-minecraftToDiscord: "%rank% %player%: %message%"
+minecraftToDiscord: "%player%: %message%"
 discordToMinecraft: "%player%: %message%"
+
+# The CommandWatcher module
 commandWatcherEnabled: true
 commandWatcherChannel: 000000000000000000
+
+# The OreMiner module
 oreEnabled: true
 oreChannel: 000000000000000000
+
+# Bot information
 botStatusEnabled: true
 botType: "playing"
-botStatus: "with DiscordLink"
+botStatus: "with DiscordX"
 botPrefix: "!"
+serverIP: "ChangeThisInTheConfig.yml"

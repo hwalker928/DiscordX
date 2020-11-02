@@ -1,9 +1,7 @@
 package org.harrydev.discordlink;
 
-import me.leoko.advancedban.bukkit.event.PunishmentEvent;
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.entities.TextChannel;
-import net.milkbowl.vault.Vault;
 import net.milkbowl.vault.permission.Permission;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.event.EventHandler;
@@ -32,8 +30,7 @@ public class MCToDiscord implements Listener {
     public void onMessage(AsyncPlayerChatEvent e) {
         String message = e.getMessage();
         String player = e.getPlayer().getName();
-        Permission perm = null;
-        textChannel.sendMessage(Objects.requireNonNull(config.getString("minecraftToDiscord")).replace("%player%", player).replace("%message%", message).replace("%rank%", DiscordLink.getPermissions().getPrimaryGroup(e.getPlayer()))).queue();
+        textChannel.sendMessage(Objects.requireNonNull(config.getString("minecraftToDiscord")).replace("%player%", player).replace("%message%", message)).queue();
     }
 
 }

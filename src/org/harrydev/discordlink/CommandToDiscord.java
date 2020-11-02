@@ -1,6 +1,5 @@
 package org.harrydev.discordlink;
 
-import me.leoko.advancedban.bukkit.event.RevokePunishmentEvent;
 import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.entities.TextChannel;
@@ -20,7 +19,7 @@ public class CommandToDiscord implements Listener {
     TextChannel textChannel;
 
 
-    public CommandToDiscord(JDA jda, DiscordLink plugin) {
+    public CommandToDiscord(JDA jda, org.harrydev.discordlink.DiscordLink plugin) {
         this.bot = jda;
         this.plugin = plugin;
         this.config = plugin.getConfig();

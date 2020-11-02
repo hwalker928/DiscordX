@@ -29,6 +29,13 @@ public class PingCommand extends ListenerAdapter {
             e.getChannel().sendMessage(embed.build()).queue();
 
         }
+        if (e.getMessage().getContentRaw().equals(config.getString("botPrefix") + "ip")) {
+            EmbedBuilder embed = new EmbedBuilder();
+            embed.setTitle(config.getString("serverIP"));
+            embed.setColor(Color.orange);
+            e.getChannel().sendMessage(embed.build()).queue();
+
+        }
     }
 
 }
