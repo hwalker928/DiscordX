@@ -4,19 +4,13 @@ A plugin to link minecraft servers with discord.
 # Supported messages
 - 2-way chat link
 
-- AdvancedBans announcements
-
 - Breakage of Diamond Ore
 
 - Command executed
 
-- *Server started and stopped*
+- Server started and stopped
 
-- *Join/Leave messages*
-
-- *LiteBans announcements*
-
-- *NoCheatPlus alerts*
+- Join/Leave messages
 
 # FAQ
 **Do I need to host the discord bot?**
