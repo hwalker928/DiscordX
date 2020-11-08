@@ -28,4 +28,3 @@ All options can be found in /plugins/DiscordX/config.yml. Make sure to also add 
 # Contributors
 
 - [hwalker928](https://harrydev.me/github)
-- [PhoenixTheDev](https://github.com/PhoenixTheDev)
