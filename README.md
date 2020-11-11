@@ -25,6 +25,10 @@ Make sure you have changed the needed values in the config. If this keeps on hap
 
 All options can be found in /plugins/DiscordX/config.yml. Make sure to also add the channel ID and any other options that may be needed for the plugin to operate correctly. 
 
+**I keep getting a "Could not pass event" error!**
+
+Make sure you have filled out ALL the options in the config.yml, especially the channelID one!
+
 # Contributors
 
 - [hwalker928](https://harrydev.me/github)
