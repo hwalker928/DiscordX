@@ -8,7 +8,6 @@ import org.apache.tools.ant.filters.ReplaceTokens
 
 
 group = 'org.harrydev'
-version = '1.0-SNAPSHOT'
 
 mainClassName = 'org.harrydev.discordx.DiscordX'
 
@@ -40,7 +39,7 @@ dependencies {
 
 processResources {
     from(sourceSets.main.resources.srcDirs) {
-        filter ReplaceTokens, tokens: [version: version]
+        filter ReplaceTokens, tokens: [version: findProperty("version")]
     }
 }
 
