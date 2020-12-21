@@ -1,3 +1,8 @@
+plugins {
+    id 'application'
+    id 'com.github.johnrengelman.shadow' version '5.2.0'
+}
+
 import org.apache.tools.ant.filters.ReplaceTokens
 
 apply plugin: 'java'
@@ -5,7 +10,17 @@ apply plugin: 'java'
 group = 'org.harrydev'
 version = '1.0-SNAPSHOT'
 
+
+
+mainClassName = 'org.harrydev.discordx.DiscordX'
+
+version '1.0'
+def jdaVersion = '1.8'
+
+sourceCompatibility = targetCompatibility = 1.8
+
 sourceCompatibility = '1.8'
+compileJava.options.encoding = 'UTF-8'
 targetCompatibility = '1.8'
 
 repositories {
@@ -18,10 +33,12 @@ repositories {
         name = 'sonatype'
         url = 'https://oss.sonatype.org/content/groups/public/'
     }
+    jcenter()
 }
 
 dependencies {
     compileOnly 'org.spigotmc:spigot-api:1.12-R0.1-SNAPSHOT'
+    compile "net.dv8tion:JDA:$jdaVersion"
 }
 
 processResources {
@@ -29,3 +46,5 @@ processResources {
         filter ReplaceTokens, tokens: [version: version]
     }
 }
+
+

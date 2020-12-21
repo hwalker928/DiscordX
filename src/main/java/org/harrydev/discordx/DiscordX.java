@@ -2,7 +2,7 @@ package org.harrydev.discordx;
 
 import org.bukkit.plugin.java.JavaPlugin;
 
-public final class Discordx extends JavaPlugin {
+public final class DiscordX extends JavaPlugin {
 
     @Override
     public void onEnable() {
