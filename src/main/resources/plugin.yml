@@ -1,5 +1,5 @@
-name: Discordx
-version: @version@
+name: DiscordX
+version: BETA
 main: org.harrydev.discordx.DiscordX
 authors: [ harrydev, Jpuf ]
 description: A plugin to link your Minecraft Server to Discord
