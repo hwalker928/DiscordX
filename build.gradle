@@ -1,21 +1,16 @@
 plugins {
     id 'application'
     id 'com.github.johnrengelman.shadow' version '5.2.0'
+    id 'java'
 }
 
 import org.apache.tools.ant.filters.ReplaceTokens
 
-apply plugin: 'java'
 
 group = 'org.harrydev'
 version = '1.0-SNAPSHOT'
 
-
-
 mainClassName = 'org.harrydev.discordx.DiscordX'
-
-version '1.0'
-def jdaVersion = '1.8'
 
 sourceCompatibility = targetCompatibility = 1.8
 
@@ -25,6 +20,7 @@ targetCompatibility = '1.8'
 
 repositories {
     mavenCentral()
+    jcenter()
     maven {
         name = 'spigotmc-repo'
         url = 'https://hub.spigotmc.org/nexus/content/repositories/snapshots/'
@@ -33,12 +29,13 @@ repositories {
         name = 'sonatype'
         url = 'https://oss.sonatype.org/content/groups/public/'
     }
-    jcenter()
 }
 
 dependencies {
     compileOnly 'org.spigotmc:spigot-api:1.12-R0.1-SNAPSHOT'
-    compile "net.dv8tion:JDA:$jdaVersion"
+    compile ("net.dv8tion:JDA:${project.jdaVersion}") {
+        exclude module: 'opus-java'
+    }
 }
 
 processResources {
@@ -47,4 +44,20 @@ processResources {
     }
 }
 
+jar {
+    archiveFileName = findProperty("plugin-name") + " v" + findProperty("version") + " " + "unshaded" + ".jar"
+}
 
+shadowJar {
+    archiveFileName = findProperty("plugin-name") + " v" + findProperty("version") + ".jar"
+}
+
+tasks.withType(Jar) {
+    destinationDirectory = file("$rootDir/bin/")
+}
+
+compileJava.dependsOn clean
+
+clean.doLast {
+    file("${rootDir}/bin").deleteDir()
+}
