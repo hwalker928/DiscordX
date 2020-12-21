@@ -33,3 +33,4 @@ Make sure you have filled out ALL the options in the config.yml, especially the 
 
 - [hwalker928](https://harrydev.me/github)
 - [PhoenixTheDev](https://github.com/PhoenixTheDev)
+- [Jpuf0](https://github.com/Jpuf0)
