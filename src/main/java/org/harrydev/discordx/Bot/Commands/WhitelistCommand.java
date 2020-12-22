@@ -6,6 +6,7 @@ import net.dv8tion.jda.api.hooks.ListenerAdapter;
 import org.bukkit.Bukkit;
 import org.bukkit.command.ConsoleCommandSender;
 import org.harrydev.discordx.Bot.bot;
+import org.harrydev.discordx.Utils.Functions;
 import org.harrydev.discordx.Utils.Lag;
 
 import java.awt.*;
@@ -21,9 +22,7 @@ public class WhitelistCommand extends ListenerAdapter {
             eb.setColor(Color.GREEN);
             eb.setAuthor("Whitelisted " + username[1] + "!", null, Avatar);
             e.getChannel().sendMessage(eb.build()).queue();
-            ConsoleCommandSender console = Bukkit.getServer().getConsoleSender();
-            String command = "whitelist " + username[1];
-            Bukkit.dispatchCommand(console, command);
+            Functions.executeConsoleCommand("whitelist " + username[1]);
         }
     }
 
