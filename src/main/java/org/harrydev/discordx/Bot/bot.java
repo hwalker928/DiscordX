@@ -8,6 +8,7 @@ import net.dv8tion.jda.api.entities.TextChannel;
 import org.harrydev.discordx.Bot.Commands.HelpCommand;
 import org.harrydev.discordx.Bot.Commands.PingCommand;
 import org.harrydev.discordx.Bot.Commands.ServerCommand;
+import org.harrydev.discordx.Bot.Commands.WhitelistCommand;
 import org.harrydev.discordx.Bot.Events.DiscordMessage;
 import org.harrydev.discordx.DiscordX;
 import org.harrydev.discordx.Utils.Logger;
@@ -32,12 +33,14 @@ public class bot {
         JDABuilder jdaBuilder = JDABuilder.createDefault(Token);
 
         try {
-            PingCommand pingPong = new PingCommand();
-            jdaBuilder.addEventListeners(pingPong);
+            PingCommand pingCommand = new PingCommand();
             ServerCommand serverCommand = new ServerCommand();
-            jdaBuilder.addEventListeners(serverCommand);
             HelpCommand helpCommand = new HelpCommand();
+            WhitelistCommand whitelistCommand = new WhitelistCommand();
+            jdaBuilder.addEventListeners(pingCommand);
+            jdaBuilder.addEventListeners(serverCommand);
             jdaBuilder.addEventListeners(helpCommand);
+            jdaBuilder.addEventListeners(whitelistCommand);
             jdaBuilder.setActivity(Activity.playing("Minecraft"));
             jdaBuilder.addEventListeners(new DiscordMessage());
             jda = jdaBuilder.build();
