@@ -1,5 +1,7 @@
 botToken: "TokenGoesHere"
 chatChannel: 000000000000000000
 
-discordToMinecraft: "%player%: %message%"
+serverIP: "play.example.com"
+
+discordToMinecraft: "&7[&b&lDiscord&7]&r %player%: %message%"
 minecraftToDiscord: "**%player%**: %message%"

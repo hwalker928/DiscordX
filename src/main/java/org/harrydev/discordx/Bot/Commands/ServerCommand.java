@@ -6,14 +6,15 @@ import net.dv8tion.jda.api.hooks.ListenerAdapter;
 
 import java.awt.*;
 
-public class PingCommand extends ListenerAdapter {
+public class ServerCommand extends ListenerAdapter {
 
     @Override
     public void onMessageReceived(MessageReceivedEvent e) {
-        if (e.getMessage().getContentRaw().equals("!ping")) {
+        if (e.getMessage().getContentRaw().equals("!server")) {
             EmbedBuilder embed = new EmbedBuilder();
-            embed.setTitle("Ping: " + e.getJDA().getGatewayPing() + "ms").setColor(Color.GRAY);
-            embed.setThumbnail("https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/facebook/230/table-tennis-paddle-and-ball_1f3d3.png");
+            embed.setTitle("Server info").setColor(Color.GREEN);
+            embed.addField("Server IP:", "needstobecod.ed", true);
+            embed.addField("Server TPS:", "needstobecod.ed", true);
             e.getChannel().sendMessage(embed.build()).queue();
         }
     }
