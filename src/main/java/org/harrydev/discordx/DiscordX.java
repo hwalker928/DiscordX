@@ -11,6 +11,7 @@ public final class DiscordX extends JavaPlugin {
 
     @Override
     public void onEnable() {
+        saveDefaultConfig();
         bot.Start();
         EventManager.register();
     }
