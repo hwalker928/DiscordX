@@ -15,6 +15,7 @@ public class ServerCommand extends ListenerAdapter {
             embed.setTitle("Server info").setColor(Color.GREEN);
             embed.addField("Server IP:", "needstobecod.ed", true);
             embed.addField("Server TPS:", "needstobecod.ed", true);
+            embed.setThumbnail("https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/emojidex/112/file-cabinet_1f5c4.png");
             e.getChannel().sendMessage(embed.build()).queue();
         }
     }
