@@ -1,1 +1,5 @@
 botToken: "TokenGoesHere"
+chatChannel: "Chanel"
+
+discordToMinecraft: "%player%: %message%"
+minecraftToDiscord: "**%player%**: %message%"

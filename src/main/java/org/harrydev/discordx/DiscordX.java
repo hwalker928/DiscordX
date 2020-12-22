@@ -2,6 +2,7 @@ package org.harrydev.discordx;
 
 import org.bukkit.plugin.java.JavaPlugin;
 import org.harrydev.discordx.Bot.bot;
+import org.harrydev.discordx.Events.EventManager;
 
 
 public final class DiscordX extends JavaPlugin {
@@ -11,11 +12,12 @@ public final class DiscordX extends JavaPlugin {
     @Override
     public void onEnable() {
         bot.Start();
+        EventManager.register();
     }
 
     @Override
     public void onDisable() {
-        // Plugin shutdown logic
+        bot.SendShutdown();
         getLogger().info("Goodbye!");
     }
 
