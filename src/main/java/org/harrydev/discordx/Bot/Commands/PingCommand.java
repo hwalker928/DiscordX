@@ -12,7 +12,7 @@ public class PingCommand extends ListenerAdapter {
     public void onMessageReceived(MessageReceivedEvent e) {
         if (e.getMessage().getContentRaw().equals("!ping")) {
             EmbedBuilder embed = new EmbedBuilder();
-            embed.setTitle("Ping: " + e.getJDA().getGatewayPing() + "ms").setColor(Color.GRAY);
+            embed.setTitle("Ping: " + e.getJDA().getGatewayPing() + "ms").setColor(Color.ORANGE);
             embed.setThumbnail("https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/facebook/230/table-tennis-paddle-and-ball_1f3d3.png");
             e.getChannel().sendMessage(embed.build()).queue();
         }

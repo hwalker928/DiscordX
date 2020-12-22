@@ -26,8 +26,6 @@ public class MessageEvent implements Listener {
 
     @EventHandler
     public void OnPlayerMessage(AsyncPlayerChatEvent event) {
-        event.getPlayer();
-        event.getMessage();
-        textChannel.sendMessage(Objects.requireNonNull(config.getString("discordToMinecraft")).replace("%player%", event.getPlayer().getName()).replace("%message%", event.getMessage())).queue();
+        textChannel.sendMessage(Objects.requireNonNull(config.getString("minecraftToDiscord")).replace("%player%", event.getPlayer().getName()).replace("%message%", event.getMessage())).queue();
     }
 }

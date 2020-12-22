@@ -5,6 +5,7 @@ import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.JDABuilder;
 import net.dv8tion.jda.api.entities.Activity;
 import net.dv8tion.jda.api.entities.TextChannel;
+import org.harrydev.discordx.Bot.Commands.HelpCommand;
 import org.harrydev.discordx.Bot.Commands.PingCommand;
 import org.harrydev.discordx.Bot.Commands.ServerCommand;
 import org.harrydev.discordx.Bot.Events.DiscordMessage;
@@ -35,6 +36,8 @@ public class bot {
             jdaBuilder.addEventListeners(pingPong);
             ServerCommand serverCommand = new ServerCommand();
             jdaBuilder.addEventListeners(serverCommand);
+            HelpCommand helpCommand = new HelpCommand();
+            jdaBuilder.addEventListeners(helpCommand);
             jdaBuilder.setActivity(Activity.playing("Minecraft"));
             jdaBuilder.addEventListeners(new DiscordMessage());
             jda = jdaBuilder.build();
@@ -51,12 +54,12 @@ public class bot {
     }
 
     public static void SendStartup() {
-        EmbedBuilder eb = new EmbedBuilder().setDescription("Server Started!").setColor(Color.GREEN);
+        EmbedBuilder eb = new EmbedBuilder().setDescription("Server started!").setColor(Color.GREEN);
         Objects.requireNonNull(jda.getTextChannelById(INSTANCE.getConfig().getLong("chatChannel"))).sendMessage(eb.build()).queue();
     }
 
     public static void SendShutdown() {
-        EmbedBuilder eb = new EmbedBuilder().setDescription("Server Shutting Down!").setColor(Color.RED);
+        EmbedBuilder eb = new EmbedBuilder().setDescription("Server stopped!").setColor(Color.RED);
         Objects.requireNonNull(jda.getTextChannelById(INSTANCE.getConfig().getLong("chatChannel"))).sendMessage(eb.build()).queue();
     }
 

@@ -19,7 +19,7 @@ public class DiscordMessage extends ListenerAdapter {
         if(!(isBot)) {
             if(event.getChannel().getIdLong() == (config.getLong("chatChannel"))){
                 if(!event.getMessage().getContentRaw().isEmpty()){
-                    Bukkit.broadcastMessage(Objects.requireNonNull(config.getString("discordToMinecraft")).replace("%player%", event.getAuthor().getName()).replace("%message%", event.getMessage().getContentStripped()));
+                    Bukkit.broadcastMessage(Objects.requireNonNull(config.getString("discordToMinecraft")).replace("%player%", event.getAuthor().getName()).replace("%message%", event.getMessage().getContentStripped()).replace("&", "§"));
                 }
             }
         }
