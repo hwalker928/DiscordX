@@ -29,7 +29,7 @@ public class DeathEvent implements Listener {
         EmbedBuilder eb = new EmbedBuilder();
         String Avatar = "https://mc-heads.net/avatar/"+event.getEntity().getName();
         eb.setColor(Color.BLACK);
-        eb.setAuthor(event.getDeathMessage(), Avatar, Avatar);
+        eb.setAuthor(event.getDeathMessage(), null, Avatar);
         textChannel.sendMessage(eb.build()).queue();
     }
 }

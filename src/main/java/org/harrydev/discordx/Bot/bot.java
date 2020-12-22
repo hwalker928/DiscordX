@@ -22,6 +22,7 @@ public class bot {
     private static final DiscordX INSTANCE = DiscordX.getInstance();
     private static final String Token = INSTANCE.getConfig().getString("botToken");
     private static JDA jda;
+    private static String prefix = INSTANCE.getConfig().getString("botPrefix");
 
     public static void Start() {
 
@@ -54,6 +55,10 @@ public class bot {
 
     public static JDA getBot() {
         return jda;
+    }
+
+    public static String getPrefix() {
+        return prefix;
     }
 
     public static void SendStartup() {
