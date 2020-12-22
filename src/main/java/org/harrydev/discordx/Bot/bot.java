@@ -52,12 +52,12 @@ public class bot {
 
     public static void SendStartup() {
         EmbedBuilder eb = new EmbedBuilder().setDescription("Server Started!").setColor(Color.GREEN);
-        //Objects.requireNonNull(jda.getTextChannelById(INSTANCE.getConfig().getLong("chatChannel"))).sendMessage(eb.build()).queue();
+        Objects.requireNonNull(jda.getTextChannelById(INSTANCE.getConfig().getLong("chatChannel"))).sendMessage(eb.build()).queue();
     }
 
     public static void SendShutdown() {
         EmbedBuilder eb = new EmbedBuilder().setDescription("Server Shutting Down!").setColor(Color.RED);
-        //Objects.requireNonNull(jda.getTextChannelById(INSTANCE.getConfig().getLong("chatChannel"))).sendMessage(eb.build()).queue();
+        Objects.requireNonNull(jda.getTextChannelById(INSTANCE.getConfig().getLong("chatChannel"))).sendMessage(eb.build()).queue();
     }
 
 }
