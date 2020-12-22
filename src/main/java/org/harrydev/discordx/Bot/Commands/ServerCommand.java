@@ -16,6 +16,7 @@ public class ServerCommand extends ListenerAdapter {
             EmbedBuilder embed = new EmbedBuilder();
             embed.setTitle("Server info").setColor(Color.GREEN);
             embed.addField("Server IP:", Bukkit.getServer().getIp(), true);
+            embed.setThumbnail("https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/emojidex/112/file-cabinet_1f5c4.png");
             embed.addField("Server TPS:", String.valueOf(Math.round(Lag.getTPS())), true);
             e.getChannel().sendMessage(embed.build()).queue();
         }
