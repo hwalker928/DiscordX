@@ -4,5 +4,7 @@ chatChannel: 000000000000000000
 
 serverIP: "play.example.com"
 
+discordJoinMessage: "Want to join our discord?\n Use this link: %invite%"
+
 discordToMinecraft: "&7[&b&lDiscord&7]&r %player%: %message%"
 minecraftToDiscord: "**%player%**: %message%"

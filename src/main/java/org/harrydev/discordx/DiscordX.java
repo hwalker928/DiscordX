@@ -3,8 +3,8 @@ package org.harrydev.discordx;
 import org.bstats.bukkit.Metrics;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.harrydev.discordx.Bot.bot;
+import org.harrydev.discordx.Commands.commands.DiscordCommand;
 import org.harrydev.discordx.Events.EventManager;
-import org.harrydev.discordx.Utils.Logger;
 
 
 public final class DiscordX extends JavaPlugin {
@@ -17,6 +17,7 @@ public final class DiscordX extends JavaPlugin {
         saveDefaultConfig();
         bot.Start();
         EventManager.register();
+        new DiscordCommand().register();
     }
 
     @Override

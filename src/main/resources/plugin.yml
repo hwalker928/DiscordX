@@ -4,3 +4,9 @@ main: org.harrydev.discordx.DiscordX
 authors: [ harrydev, Jpuf ]
 description: A plugin to link your Minecraft Server to Discord
 website: https://harrydev.tech
+
+commands:
+  discord:
+    description: Creates and stores an invite to the discord server
+    usage: /discord
+    permission: DiscordX.discord
