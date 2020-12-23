@@ -11,6 +11,8 @@ import org.harrydev.discordx.Utils.Logger;
 
 import javax.security.auth.login.LoginException;
 import java.awt.*;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Objects;
 import java.util.regex.Pattern;
 
@@ -30,12 +32,7 @@ public class bot {
         JDABuilder jdaBuilder = JDABuilder.createDefault(Token);
 
         try {
-            jdaBuilder.addEventListeners(new PingCommand());
-            jdaBuilder.addEventListeners(new ServerCommand());
-            jdaBuilder.addEventListeners(new HelpCommand());
-            jdaBuilder.addEventListeners(new WhitelistCommand());
-            jdaBuilder.addEventListeners(new DiscordMessage());
-            jdaBuilder.addEventListeners(new ListCommand());
+            getListeners().forEach(jdaBuilder::addEventListeners);
             jdaBuilder.setActivity(Activity.playing("Minecraft"));
             jda = jdaBuilder.build();
             jda.awaitReady();
@@ -66,7 +63,7 @@ public class bot {
     }
 
     public static boolean CheckToken(String Token) {
-        Pattern tokenPattern = Pattern.compile("([a-zA-Z0-9]{24}\\.[a-zA-Z0-9]{6}\\.[a-zA-Z0-9_\\-]{27}|mfa\\.[a-zA-Z0-9_\\-]{84})");
+        Pattern tokenPattern = Pattern.compile("[a-zA-Z0-9\\-_.]{59}");
         if(Token.equals("TokenGoesHere")) {
             Logger.warn("Please Set the bot token in the config.yml!");
             Logger.warn("Aborting");
@@ -80,5 +77,15 @@ public class bot {
             return false;
         }
         return true;
+    }
+
+    public static List<ListenerAdapter> getListeners() {
+        return Arrays.asList(
+                new PingCommand(),
+                new ServerCommand(),
+                new HelpCommand(),
+                new WhitelistCommand(),
+                new DiscordMessage()
+        );
     }
 }

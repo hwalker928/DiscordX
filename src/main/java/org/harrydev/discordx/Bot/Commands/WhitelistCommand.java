@@ -15,12 +15,16 @@ public class WhitelistCommand extends ListenerAdapter {
         if (e.getMessage().getContentRaw().startsWith(bot.getPrefix() + "whitelist")) {
             String[] username = e.getMessage().getContentRaw().split(" ");
             EmbedBuilder eb = new EmbedBuilder();
-            String Avatar = "https://cravatar.eu/avatar/"+username[1]+"/256.png";
-            eb.setColor(Color.GREEN);
-            eb.setAuthor("Whitelisted " + username[1] + "!", null, Avatar);
+            if (username[1] == null) {
+                eb.setColor(Color.red);
+                eb.setDescription("You need to include a player to whitelist!");
+            } else {
+                String Avatar = "https://cravatar.eu/avatar/" + username[1] + "/256.png";
+                eb.setColor(Color.GREEN);
+                eb.setAuthor("Whitelisted " + username[1] + "!", null, Avatar);
+                Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "whitelist " + username[1]);
+            }
             e.getChannel().sendMessage(eb.build()).queue();
-            Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "whitelist " + username[1]);
         }
     }
-
 }
