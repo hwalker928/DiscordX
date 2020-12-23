@@ -4,6 +4,7 @@ import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.JDABuilder;
 import net.dv8tion.jda.api.entities.Activity;
+import net.dv8tion.jda.api.hooks.ListenerAdapter;
 import org.harrydev.discordx.Bot.Commands.*;
 import org.harrydev.discordx.Bot.Events.DiscordMessage;
 import org.harrydev.discordx.DiscordX;
@@ -32,6 +33,7 @@ public class bot {
         JDABuilder jdaBuilder = JDABuilder.createDefault(Token);
 
         try {
+            jdaBuilder.addEventListeners(new DiscordMessage());
             getListeners().forEach(jdaBuilder::addEventListeners);
             jdaBuilder.setActivity(Activity.playing("Minecraft"));
             jda = jdaBuilder.build();
@@ -84,8 +86,7 @@ public class bot {
                 new PingCommand(),
                 new ServerCommand(),
                 new HelpCommand(),
-                new WhitelistCommand(),
-                new DiscordMessage()
+                new WhitelistCommand()
         );
     }
 }
