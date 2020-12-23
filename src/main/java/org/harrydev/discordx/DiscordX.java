@@ -27,7 +27,9 @@ public final class DiscordX extends JavaPlugin {
 
     @Override
     public void onDisable() {
-        bot.SendShutdown();
+        if(bot.tokenIsValid) {
+            bot.SendShutdown();
+        }
         getLogger().info("Goodbye!");
     }
 

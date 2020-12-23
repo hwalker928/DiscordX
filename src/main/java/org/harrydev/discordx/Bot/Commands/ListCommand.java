@@ -14,7 +14,7 @@ public class ListCommand extends ListenerAdapter {
     public void onMessageReceived(MessageReceivedEvent e) {
         if (e.getMessage().getContentRaw().equals(bot.getPrefix() + "list")) {
             EmbedBuilder embed = new EmbedBuilder();
-            embed.setTitle("There are "+Bukkit.getOnlinePlayers().size()+" players currently online!").setColor(Color.GREEN);
+            embed.setTitle("There are " + Bukkit.getOnlinePlayers().size() + " players currently online!").setColor(Color.GREEN);
             embed.setThumbnail("https://i.pinimg.com/originals/85/78/bf/8578bfd439ef6ee41e103ae82b561986.png");
             e.getChannel().sendMessage(embed.build()).queue();
         }
