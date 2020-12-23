@@ -17,7 +17,7 @@ public class HelpCommand extends ListenerAdapter {
             EmbedBuilder embed = new EmbedBuilder();
             embed.setTitle("About DiscordX").setColor(Color.ORANGE);
             embed.setDescription("DiscordX is a Spigot plugin that connects Discord to Minecraft.");
-            embed.addField("__Commands:__", "`help`\n`ping`\n`server`\n`whitelist`", false);
+            embed.addField("__Commands:__", "`help`\n`ping`\n`server`\n`whitelist`\n`list`", false);
             embed.addField("__Spigot resource:__", "https://example.com", false);
             embed.addField("__Github repo:__", "https://github.com/hwalker928/DiscordX", false);
             e.getChannel().sendMessage(embed.build()).queue();
