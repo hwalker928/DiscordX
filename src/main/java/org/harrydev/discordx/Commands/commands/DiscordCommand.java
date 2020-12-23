@@ -24,12 +24,12 @@ public class DiscordCommand extends AbstractCommand {
         if(INSTANCE.getConfig().getString("GuildInvite") != null){
             invite = INSTANCE.getConfig().getString("GuildInvite");
             if(!invitePattern.matcher(invite).matches()){
-                invite = guild.getSystemChannel().createInvite().complete().getUrl();
+                invite = guild.getSystemChannel().createInvite().setMaxAge(0).complete().getUrl();
                 INSTANCE.getConfig().set("GuildInvite", invite);
                 INSTANCE.saveConfig();
             }
         } else {
-            invite = guild.getSystemChannel().createInvite().complete().getUrl();
+            invite = guild.getSystemChannel().createInvite().setMaxAge(0).complete().getUrl();
             INSTANCE.getConfig().set("GuildInvite", invite);
             INSTANCE.saveConfig();
         }

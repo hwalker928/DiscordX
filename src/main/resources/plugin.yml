@@ -9,8 +9,13 @@ commands:
   discord:
     description: Creates and stores an invite to the discord server
     usage: /discord
-    permission: DiscordX.discord
-  DiscordX:
+    permission: discordx.discord
+  discordx:
     description: Sends a Command list in console
-    usage: /DiscordX
-    permission: DiscordX.DiscordX
+    usage: /discordx
+    permission: discordx.about
+permissions:
+  discordx.discord:
+    default: true
+  discordx.about:
+    default: true

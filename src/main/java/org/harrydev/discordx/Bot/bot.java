@@ -22,7 +22,7 @@ public class bot {
     private static final DiscordX INSTANCE = DiscordX.getInstance();
     private static final String Token = INSTANCE.getConfig().getString("botToken");
     private static JDA jda;
-    private static String prefix = INSTANCE.getConfig().getString("botPrefix");
+    private static final String prefix = INSTANCE.getConfig().getString("botPrefix");
     public static boolean tokenIsValid;
 
     public static void Start() {
@@ -68,7 +68,7 @@ public class bot {
     }
 
     public static boolean CheckToken(String Token) {
-        Pattern tokenPattern = Pattern.compile("[a-zA-Z0-9\\-_.]{59}");
+        Pattern tokenPattern = Pattern.compile("([a-zA-Z0-9]{24}\\.[a-zA-Z0-9]{6}\\.[a-zA-Z0-9_\\-]{27}|mfa\\.[a-zA-Z0-9_\\-]{84})");
         if(Token.equals("TokenGoesHere")) {
             Logger.warn("Please Set the bot token in the config.yml!");
             Logger.warn("Aborting");
