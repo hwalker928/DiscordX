@@ -23,6 +23,7 @@ public class bot {
     private static final String Token = INSTANCE.getConfig().getString("botToken");
     private static JDA jda;
     private static String prefix = INSTANCE.getConfig().getString("botPrefix");
+    public static boolean tokenIsValid;
 
     public static void Start() {
         if(!CheckToken(Token)) {
@@ -41,6 +42,7 @@ public class bot {
             jda = jdaBuilder.build();
             jda.awaitReady();
             Logger.info("The bot has started!");
+            tokenIsValid = true;
             SendStartup();
         } catch (LoginException | InterruptedException e) {
             Logger.error(e.toString());
@@ -66,15 +68,17 @@ public class bot {
     }
 
     public static boolean CheckToken(String Token) {
-        Pattern tokenPattern = Pattern.compile("[a-zA-Z0-9\\-.]{59}");
+        Pattern tokenPattern = Pattern.compile("[a-zA-Z0-9\\-_.]{59}");
         if(Token.equals("TokenGoesHere")) {
             Logger.warn("Please Set the bot token in the config.yml!");
             Logger.warn("Aborting");
+            tokenIsValid = false;
             return false;
         }
         if(!tokenPattern.matcher(Token).matches()){
             Logger.warn("Your Token is Incorrect or Malformed");
             Logger.warn("Aborting");
+            tokenIsValid = false;
             return false;
         }
         return true;

@@ -8,6 +8,9 @@ import org.harrydev.discordx.Utils.Logger;
 
 public class EventManager {
     public static void register() {
+        if(!bot.tokenIsValid){
+            return;
+        }
         Logger.info("Registering Events...");
         Bukkit.getScheduler().scheduleSyncRepeatingTask(DiscordX.getInstance(), new Lag(), 100L, 1L);
         Bukkit.getPluginManager().registerEvents(new JoinLeaveEvent(bot.getBot()), DiscordX.getInstance());

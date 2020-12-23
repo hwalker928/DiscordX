@@ -10,3 +10,7 @@ commands:
     description: Creates and stores an invite to the discord server
     usage: /discord
     permission: DiscordX.discord
+  DiscordX:
+    description: Sends a Command list in console
+    usage: /DiscordX
+    permission: DiscordX.DiscordX
