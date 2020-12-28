@@ -22,7 +22,7 @@ public class DiscordMessage extends ListenerAdapter {
                 if(!event.getMessage().getContentRaw().isEmpty()){
                     if(event.getMessage().getContentRaw().startsWith(bot.getPrefix()))
                         return;
-                    Bukkit.broadcastMessage(Objects.requireNonNull(config.getString("discordToMinecraft")).replace("%player%", event.getAuthor().getName()).replace("%message%", event.getMessage().getContentStripped()).replace("&", "§"));
+                    Bukkit.broadcastMessage(Objects.requireNonNull(config.getString("discordToMinecraft")).replace("%player%", event.getAuthor().getName()).replace("%message%", event.getMessage().getContentStripped()).replace("%prefix%", config.getString("prefix")).replace("&", "§"));
                 }
             }
         }
