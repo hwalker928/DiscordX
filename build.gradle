@@ -40,6 +40,7 @@ dependencies {
     compile ("net.dv8tion:JDA:${project.jdaVersion}") {
         exclude module: 'opus-java'
     }
+    compile("club.minnced:discord-webhooks:${project.webhookVersion}")
 }
 
 processResources {

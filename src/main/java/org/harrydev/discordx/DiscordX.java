@@ -3,6 +3,7 @@ package org.harrydev.discordx;
 import org.bstats.bukkit.Metrics;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.harrydev.discordx.Bot.bot;
+import org.harrydev.discordx.Bot.webhook;
 import org.harrydev.discordx.Commands.AbstractCommand;
 import org.harrydev.discordx.Commands.commands.DiscordCommand;
 import org.harrydev.discordx.Commands.commands.DiscordXCommand;
@@ -21,6 +22,7 @@ public final class DiscordX extends JavaPlugin {
         new Metrics(this, 9732);
         saveDefaultConfig();
         bot.Start();
+        webhook.Start();
         EventManager.register();
         this.getCommands().forEach(AbstractCommand::register);
     }
