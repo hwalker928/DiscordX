@@ -19,7 +19,7 @@ public class MessageEvent implements Listener {
     FileConfiguration config;
     JDA bot;
     TextChannel textChannel;
-    String noPing = INSTANCE.getConfig().getString("nopingmsg").replace("&", "§").replace("%prefix%", config.getString("prefix"));
+    String noPing = INSTANCE.getConfig().getString("nopingmsg").replace("&", "§");
         //String noPing = ChatColor.AQUA+"Please do not ping people from the game!";
 
     public MessageEvent(JDA jda) {

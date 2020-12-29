@@ -16,5 +16,6 @@ public class EventManager {
         Bukkit.getPluginManager().registerEvents(new JoinLeaveEvent(bot.getBot()), DiscordX.getInstance());
         Bukkit.getPluginManager().registerEvents(new DeathEvent(bot.getBot()), DiscordX.getInstance());
         Bukkit.getPluginManager().registerEvents(new MessageEvent(bot.getBot()), DiscordX.getInstance());
+        Bukkit.getPluginManager().registerEvents(new AdvancementEvent(bot.getBot()), DiscordX.getInstance());
     }
 }
