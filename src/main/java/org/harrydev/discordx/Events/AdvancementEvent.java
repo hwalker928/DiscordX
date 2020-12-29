@@ -9,8 +9,11 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.event.player.PlayerAdvancementDoneEvent;
 import org.harrydev.discordx.DiscordX;
+import org.harrydev.discordx.Utils.Logger;
 
 import java.awt.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class AdvancementEvent implements Listener {
     private static final DiscordX INSTANCE = DiscordX.getInstance();
@@ -27,10 +30,17 @@ public class AdvancementEvent implements Listener {
 
     @EventHandler
     public void OnPlayerAdvancement(PlayerAdvancementDoneEvent event) {
+        Pattern advancementName = Pattern.compile("([\\w+]+)/");
+        Matcher advancementNameMatcher = advancementName.matcher(event.getAdvancement().getKey().getKey());
+        String name = advancementNameMatcher.replaceAll("");
+
+        name = name.replaceAll("_", " ");
+
         EmbedBuilder eb = new EmbedBuilder();
         String Avatar = "https://mc-heads.net/avatar/"+event.getPlayer().getName();
+
         eb.setColor(Color.GREEN);
-        eb.setAuthor(event.getAdvancement().getKey().getKey(), null, Avatar);
+        eb.setAuthor(event.getPlayer().getDisplayName() + " has completed the advancement " + name + "!", null, Avatar);
         textChannel.sendMessage(eb.build()).queue();
     }
 }
