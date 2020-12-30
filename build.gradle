@@ -3,6 +3,7 @@ plugins {
     id 'com.github.johnrengelman.shadow' version '5.2.0'
     id 'java'
 }
+@java.lang.SuppressWarnings("unused")
 
 import org.apache.tools.ant.filters.ReplaceTokens
 
@@ -32,6 +33,10 @@ repositories {
         name = 'CodeMC'
         url = 'https://repo.codemc.org/repository/maven-public'
     }
+    maven {
+        name = 'lombok'
+        url = 'http://projectlombok.org/mavenrepo'
+    }
 }
 
 dependencies {
@@ -41,6 +46,7 @@ dependencies {
         exclude module: 'opus-java'
     }
     compile("club.minnced:discord-webhooks:${project.webhookVersion}")
+    compile("org.projectlombok:lombok:0.9.2")
 }
 
 processResources {

@@ -16,20 +16,6 @@ import java.awt.*;
 import java.util.Objects;
 
 public class MessageEvent implements Listener {
-    private static final DiscordX INSTANCE = DiscordX.getInstance();
-
-    FileConfiguration config;
-    JDA bot;
-    TextChannel textChannel;
-    String noPing = INSTANCE.getConfig().getString("nopingmsg").replace("&", "§");
-    //String noPing = ChatColor.AQUA+"Please do not ping people from the game!";
-
-    public MessageEvent(JDA jda) {
-        this.bot = jda;
-        this.config = INSTANCE.getConfig();
-        textChannel = jda.getTextChannelById(INSTANCE.getConfig().getLong("chatChannel"));
-    }
-
     @EventHandler
     public void OnPlayerMessage(AsyncPlayerChatEvent event) {
         Player player = event.getPlayer();

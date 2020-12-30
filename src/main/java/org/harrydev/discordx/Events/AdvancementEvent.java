@@ -6,9 +6,9 @@ import net.dv8tion.jda.api.entities.TextChannel;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
-import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.event.player.PlayerAdvancementDoneEvent;
 import org.harrydev.discordx.DiscordX;
+import org.harrydev.discordx.Utils.AdvancementTranslator.*;
 import org.harrydev.discordx.Utils.Logger;
 
 import java.awt.*;
@@ -30,17 +30,58 @@ public class AdvancementEvent implements Listener {
 
     @EventHandler
     public void OnPlayerAdvancement(PlayerAdvancementDoneEvent event) {
-        Pattern advancementName = Pattern.compile("([\\w+]+)/");
-        Matcher advancementNameMatcher = advancementName.matcher(event.getAdvancement().getKey().getKey());
-        String name = advancementNameMatcher.replaceAll("");
-
-        name = name.replaceAll("_", " ");
-
         EmbedBuilder eb = new EmbedBuilder();
         String Avatar = "https://mc-heads.net/avatar/"+event.getPlayer().getName();
+        Pattern namespacePattern = Pattern.compile("(/([\\w+]+))");
+        Pattern keyPattern = Pattern.compile("([\\w+]+)/");
+        Matcher nameMatcher = namespacePattern.matcher(event.getAdvancement().getKey().getKey());
+        Matcher keyMatcher = keyPattern.matcher(event.getAdvancement().getKey().getKey());
+        String namespace = nameMatcher.replaceAll("");
+        String key = keyMatcher.replaceAll("");
+        switch (namespace) {
+            case "story":
+                if(!story.valueOf(key).getChallenge()){
+                    eb.setAuthor(event.getPlayer().getDisplayName() + " has completed the Advancement " +  story.valueOf(key).getAdvancement() + "!", null, Avatar);
+                } else {
+                    eb.setAuthor(event.getPlayer().getDisplayName() + " has completed the Challenge " +  story.valueOf(key).getAdvancement() + "!", null, Avatar);
+                }
+                eb.setDescription(story.valueOf(key).getDescription());
+                break;
+            case "nether":
+                if(!nether.valueOf(key).getChallenge()){
+                    eb.setAuthor(event.getPlayer().getDisplayName() + " has completed the Advancement " +  nether.valueOf(key).getAdvancement() + "!", null, Avatar);
+                } else {
+                    eb.setAuthor(event.getPlayer().getDisplayName() + " has completed the Challenge " +  nether.valueOf(key).getAdvancement() + "!", null, Avatar);
+                }
+                eb.setDescription(nether.valueOf(key).getDescription());
+                break;
+            case "end":
+                if(!end.valueOf(key).getChallenge()){
+                    eb.setAuthor(event.getPlayer().getDisplayName() + " has completed the Advancement " +  end.valueOf(key).getAdvancement() + "!", null, Avatar);
+                } else {
+                    eb.setAuthor(event.getPlayer().getDisplayName() + " has completed the Challenge " +  end.valueOf(key).getAdvancement() + "!", null, Avatar);
+                }
+                eb.setDescription(end.valueOf(key).getDescription());
+                break;
+            case "adventure":
+                if(!adventure.valueOf(key).getChallenge()){
+                    eb.setAuthor(event.getPlayer().getDisplayName() + " has completed the Advancement " +  adventure.valueOf(key).getAdvancement() + "!", null, Avatar);
+                } else {
+                    eb.setAuthor(event.getPlayer().getDisplayName() + " has completed the Challenge " +  adventure.valueOf(key).getAdvancement() + "!", null, Avatar);
+                }
+                eb.setDescription(adventure.valueOf(key).getDescription());
+                break;
+            case "husbandry":
+                if(!husbandry.valueOf(key).getChallenge()){
+                    eb.setAuthor(event.getPlayer().getDisplayName() + " has completed the Advancement " +  husbandry.valueOf(key).getAdvancement() + "!", null, Avatar);
+                } else {
+                    eb.setAuthor(event.getPlayer().getDisplayName() + " has completed the Challenge " +  husbandry.valueOf(key).getAdvancement() + "!", null, Avatar);
+                }
+                eb.setDescription(husbandry.valueOf(key).getDescription());
+                break;
+        }
 
         eb.setColor(Color.GREEN);
-        eb.setAuthor(event.getPlayer().getDisplayName() + " has completed the advancement " + name + "!", null, Avatar);
         textChannel.sendMessage(eb.build()).queue();
     }
 }
