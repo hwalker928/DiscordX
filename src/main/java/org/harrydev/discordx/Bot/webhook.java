@@ -64,7 +64,7 @@ public class webhook {
         WebhookMessageBuilder messageBuilder = new WebhookMessageBuilder();
         messageBuilder.addEmbeds(embed.build());
         messageBuilder.setUsername("Console");
-        messageBuilder.setAvatarUrl("https://mc-heads.net/avatar/CONSOLE");
+        messageBuilder.setAvatarUrl("https://lh3.googleusercontent.com/proxy/nSPxIvET6NpoC4v-aPaU8Q77jTtEEDjhpW98ddb6HFv1GTVE_bJhPBIHbZOnUm-xuB3eNf_feVXjImn3ztKyBg4Gbd2E0fzMZVZ8DxBM-85o89g1Gjq3");
         webhook.send(messageBuilder.build());
     }
 

@@ -19,8 +19,8 @@ public class MessageEvent implements Listener {
     @EventHandler
     public void OnPlayerMessage(AsyncPlayerChatEvent event) {
         Player player = event.getPlayer();
-        String Avatar = "https://cravatar.eu/avatar/"+event.getPlayer().getName()+"/256.png";
+        String Avatar = "https://cravatar.eu/helmavatar/"+event.getPlayer().getName()+"/256.png";
         String message = event.getMessage();
-        webhook.sendMessage(player.getDisplayName(), Avatar, message);
+        webhook.sendMessage(player.getName(), Avatar, message);
     }
 }
