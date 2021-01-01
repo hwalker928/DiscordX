@@ -17,6 +17,7 @@ import java.util.List;
 import java.util.Objects;
 import java.util.regex.Pattern;
 
+@SuppressWarnings("BooleanMethodIsAlwaysInverted")
 public class bot {
 
     private static final DiscordX INSTANCE = DiscordX.getInstance();
@@ -45,6 +46,12 @@ public class bot {
             Logger.error(e.toString());
         }
     }
+    public static void shutdown() {
+        if(!CheckToken(Token)) {
+            return;
+        }
+        jda.shutdownNow();
+    }
 
     public static JDA getBot() {
         return jda;
@@ -62,6 +69,15 @@ public class bot {
     public static void SendShutdown() {
         EmbedBuilder eb = new EmbedBuilder().setDescription("Server stopped!").setColor(Color.RED);
         Objects.requireNonNull(jda.getTextChannelById(INSTANCE.getConfig().getLong("chatChannel"))).sendMessage(eb.build()).queue();
+        new java.util.Timer().schedule(
+                new java.util.TimerTask() {
+                    @Override
+                    public void run() {
+                        shutdown();
+                    }
+                },
+                2500
+        );
     }
 
     public static boolean CheckToken(String Token) {

@@ -14,8 +14,14 @@ commands:
     description: Sends a Command list in console
     usage: /discordx
     permission: discordx.about
+  dxdebug:
+    description: Sends a Command list in console
+    usage: /debug
+    permission: discordx.about
 permissions:
   discordx.discord:
     default: true
   discordx.about:
+    default: true
+  discordx.debug:
     default: true
