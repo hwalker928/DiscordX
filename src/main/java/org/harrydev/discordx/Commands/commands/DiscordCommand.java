@@ -7,6 +7,7 @@ import org.harrydev.discordx.Commands.AbstractCommand;
 import org.harrydev.discordx.DiscordX;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.regex.Pattern;
 
 public class DiscordCommand extends AbstractCommand {
@@ -18,21 +19,15 @@ public class DiscordCommand extends AbstractCommand {
 
     @Override
     public void onExecute(CommandSender sender, List<String> args) {
-        Guild guild = bot.getBot().getGuilds().stream().findFirst().get();
-        String invite;
-        Pattern invitePattern = Pattern.compile("https://discord.gg/[a-zA-Z0-9]{8}");
-        if(INSTANCE.getConfig().getString("guildInvite") != null){
-            invite = INSTANCE.getConfig().getString("guildInvite");
-            if(!invitePattern.matcher(invite).matches()){
-                invite = guild.getSystemChannel().createInvite().setMaxAge(0).complete().getUrl();
-                INSTANCE.getConfig().set("GuildInvite", invite);
-                INSTANCE.saveConfig();
-            }
-        } else {
-            invite = guild.getSystemChannel().createInvite().setMaxAge(0).complete().getUrl();
+        if (bot.getBot().getGuilds().size() == 1) {
+            Guild guild = bot.getBot().getGuilds().stream().findFirst().get();
+            String invite = Objects.requireNonNull(guild.getSystemChannel()).createInvite().setMaxAge(0).complete().getUrl();
             INSTANCE.getConfig().set("guildInvite", invite);
             INSTANCE.saveConfig();
+            sender.sendMessage(INSTANCE.getConfig().getString("discordJoinMessage").replace("%invite%", invite));
         }
-        sender.sendMessage(INSTANCE.getConfig().getString("discordJoinMessage").replace("%invite%", invite));
+        else {
+            sender.sendMessage("&cThe discord bot has not been invited to a guild. Please do so before continuing.".replace("&", "§"));
+        }
     }
 }
