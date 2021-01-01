@@ -1,5 +1,4 @@
 botToken: "TokenGoesHere"
-webhookURL: "WebhookURLHere"
 botPrefix: "!"
 chatChannel: 000000000000000000
 

@@ -68,13 +68,11 @@ public class bot {
         Pattern tokenPattern = Pattern.compile("[a-zA-Z0-9\\-_.]{59}");
         if(Token.equals("TokenGoesHere")) {
             Logger.warn("Please Set the bot token in the config.yml!");
-            Logger.warn("Aborting");
             tokenIsValid = false;
             return false;
         }
         if(!tokenPattern.matcher(Token).matches()){
             Logger.warn("Your Token is Incorrect or Malformed");
-            Logger.warn("Aborting");
             tokenIsValid = false;
             return false;
         }
