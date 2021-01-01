@@ -1,7 +1,8 @@
 # DiscordX
 A plugin to link minecraft servers with discord.
 
-You can find the wiki [here](https://harrydev.gitbook.io/DiscordX)
+You can find the wiki [here](https://harrydev.gitbook.io/discordx)
+
 
 # Features
 - 2-way chat link
