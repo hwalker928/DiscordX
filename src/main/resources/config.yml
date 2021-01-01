@@ -1,10 +1,12 @@
-botToken: "TokenGoesHere"
-botPrefix: "!"
+botToken: TokenGoesHere
+botPrefix: '!'
 chatChannel: 000000000000000000
 
-serverIP: "play.example.com"
-prefix: "&7[&b&lDiscord&7]&r"
-discordJoinMessage: "Want to join our discord?\n Use this link: %invite%"
-nopingmsg: "%prefix% &6Please do not try to ping everyone on the discord server!"
-discordToMinecraft: "%prefix% %player%: %message%"
-minecraftToDiscord: "**%player%**: %message%"
+serverIP: play.example.com
+prefix: '&7[&b&lDiscord&7]&r'
+discordJoinMessage: |-
+  Want to join our discord?
+   Use this link: %invite%
+nopingmsg: '%prefix% &6Please do not try to ping everyone on the discord server!'
+discordToMinecraft: '%prefix% %player%: %message%'
+minecraftToDiscord: '**%player%**: %message%'

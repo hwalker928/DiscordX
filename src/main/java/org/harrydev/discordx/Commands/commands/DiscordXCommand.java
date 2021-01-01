@@ -12,7 +12,7 @@ public class DiscordXCommand extends AbstractCommand {
     private static DiscordX INSTANCE = DiscordX.getInstance();
 
     public DiscordXCommand() {
-        super("DiscordX", "DiscordX.discordx", "Shows the Commands for DiscordX", false);
+        super("DiscordX", "discordx.discordx", "Shows the Commands for DiscordX", false);
     }
 
     @Override
