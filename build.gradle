@@ -41,7 +41,6 @@ repositories {
 
 dependencies {
     compileOnly 'org.spigotmc:spigot-api:1.12-R0.1-SNAPSHOT'
-    implementation 'org.bstats:bstats-bukkit:1.8'
     compile ("net.dv8tion:JDA:${project.jdaVersion}") {
         exclude module: 'opus-java'
     }
@@ -59,10 +58,6 @@ jar {
     archiveFileName = findProperty("plugin-name") + " v" + findProperty("version") + " " + "unshaded" + ".jar"
 }
 
-shadowJar {
-    relocate('org.bstats.bukkit', 'org.discordx.shaded.bstats')
-    archiveFileName = findProperty("plugin-name") + " v" + findProperty("version") + ".jar"
-}
 
 tasks.withType(Jar) {
     destinationDirectory = file("$rootDir/bin/")
