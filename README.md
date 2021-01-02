@@ -9,7 +9,7 @@ You can find the wiki [here](https://harrydev.gitbook.io/discordx).
 
 - Achievements
 
-- Server info and whitelister
+- Server info and whitelist commands
 
 - Server started and stopped
 
