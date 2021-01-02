@@ -20,3 +20,5 @@ You can find the wiki [here](https://harrydev.gitbook.io/discordx).
 - [hwalker928](https://harrydev.me/github)
 - [Jpuf0](https://github.com/Jpuf0)
 - [PhoenixTheDev](https://github.com/PhoenixTheDev)
+- [SuperSoda](https://github.com/MeowedAt)
+- [abhithedev](https://github.com/abhiram555)
