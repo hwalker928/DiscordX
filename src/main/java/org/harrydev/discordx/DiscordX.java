@@ -4,6 +4,7 @@ import org.bstats.bukkit.Metrics;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.harrydev.discordx.Bot.bot;
 import org.harrydev.discordx.Commands.AbstractCommand;
+import org.harrydev.discordx.Commands.commands.DxdebugCommand;
 import org.harrydev.discordx.Commands.commands.DiscordCommand;
 import org.harrydev.discordx.Commands.commands.DiscordXCommand;
 import org.harrydev.discordx.Events.EventManager;
@@ -48,7 +49,8 @@ public final class DiscordX extends JavaPlugin {
     public List<AbstractCommand> getCommands() {
         return Arrays.asList(
                 new DiscordCommand(),
-                new DiscordXCommand()
+                new DiscordXCommand(),
+                new DxdebugCommand()
         );
     }
 }
