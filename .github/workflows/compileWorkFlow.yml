@@ -1,0 +1,34 @@
+name: compile
+
+on:
+  push:
+    branches: [ v1 ]
+
+jobs:
+  compile:
+    runs-on: self-hosted
+    steps:
+      - uses: actions/checkout@v2
+      - name: Grant Execute permissions for gradlew
+        run: chmod +x gradlew
+      - name: Gradle Daemon Status
+        uses: eskatos/gradle-command-action@v1
+        with:
+          arguments: --status
+      - name: Stop Gradle Daemons
+        uses: eskatos/gradle-command-action@v1
+        with:
+          arguments: --stop
+      - name: build
+        uses: eskatos/gradle-command-action@v1
+        with:
+          arguments: build
+          wrapper-cache-enabled: true
+          dependencies-cache-enabled: true
+          configuration-cache-enabled: true
+      - name: Upload Artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: DiscordX Beta
+          path: bin/DiscordX v?.?.?.jar
+          retention-days: 5

@@ -58,6 +58,9 @@ jar {
     archiveFileName = findProperty("plugin-name") + " v" + findProperty("version") + " " + "unshaded" + ".jar"
 }
 
+shadowJar {
+    archiveFileName = findProperty("plugin-name") + " v" + findProperty("version") + ".jar"
+}
 
 tasks.withType(Jar) {
     destinationDirectory = file("$rootDir/bin/")
