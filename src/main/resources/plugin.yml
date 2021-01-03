@@ -16,12 +16,12 @@ commands:
     permission: discordx.about
   dxdebug:
     description: Sends a Command list in console
-    usage: /debug
-    permission: discordx.about
+    usage: /dxdebug
+    permission: discordx.debug
 permissions:
   discordx.discord:
     default: true
   discordx.about:
     default: true
   discordx.debug:
-    default: true
+    default: op
