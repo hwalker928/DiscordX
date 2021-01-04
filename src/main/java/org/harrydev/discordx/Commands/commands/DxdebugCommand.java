@@ -3,6 +3,7 @@ package org.harrydev.discordx.Commands.commands;
 import org.bukkit.Bukkit;
 import org.bukkit.command.CommandSender;
 import org.bukkit.event.HandlerList;
+import org.harrydev.discordx.Bot.bot;
 import org.harrydev.discordx.Commands.AbstractCommand;
 import org.harrydev.discordx.DiscordX;
 import org.harrydev.discordx.Utils.Hastebin;
@@ -54,6 +55,26 @@ public class DxdebugCommand extends AbstractCommand {
             plugin.getDescription().getCommands().forEach((s, stringObjectMap) -> data += "│  │  ├─ " + s + "\n");
             data += "│\n";
         });
+        data += "Bot Info:\n";
+        data += "├─ Guilds: " + bot.getBot().getGuilds().size() + "\n";
+        bot.getBot().getGuilds().forEach(guild -> {
+            data += "├─ " + guild.getName() + "\n";
+            data += "│  ├─ Invite: " + guild.retrieveInvites().complete().stream().findFirst().get() + "\n";
+            data += "│  ├─ Channels:\n";
+            guild.getChannels().forEach(guildChannel -> {
+                data += "│  │  ├─ " + guildChannel.getName() + "\n";
+                data += "│  │  │  ├─ Member Permissions Overrides: \n";
+                guildChannel.getMemberPermissionOverrides().forEach(memberPermissionOverride -> {
+                    data += "│  │  │  │  ├─ " + memberPermissionOverride.getMember() + "\n";
+                    data += "│  │  │  │  │  ├─ " + memberPermissionOverride.getAllowed() + "\n";
+                });
+                data += "│  │  │  ├─ Role Permissions Overrides: \n";
+                guildChannel.getRolePermissionOverrides().forEach(rolePermissionOverride -> {
+                    data += "│  │  │  │  ├─ " + rolePermissionOverride.getRole() + "\n";
+                    data += "│  │  │  │  │  ├─ " + rolePermissionOverride.getAllowed() + "\n";
+                });
+            });
+        });
         data += "│\n";
         data += "Misc Info:\n";
         data += "├─ Server Info\n";
@@ -73,6 +94,7 @@ public class DxdebugCommand extends AbstractCommand {
         data += "\n";
         if(args.contains("nohaste")){
             Arrays.asList(data.split("\n")).forEach(Logger::info);
+            data = "";
         } else {
             try {
                 String url = hastebin.post(data, false);

@@ -3,6 +3,7 @@ package org.harrydev.discordx.Bot;
 import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.JDABuilder;
+import net.dv8tion.jda.api.Permission;
 import net.dv8tion.jda.api.entities.Activity;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
 import org.harrydev.discordx.Bot.Commands.*;
@@ -39,10 +40,20 @@ public class bot {
             jda = jdaBuilder.build();
             jda.awaitReady();
             Logger.info("The bot has started!");
+            checkGuilds();
             tokenIsValid = true;
             SendStartup();
         } catch (LoginException | InterruptedException e) {
             Logger.error(e.toString());
+        }
+    }
+
+    private static void checkGuilds() {
+        if(jda.getGuilds().isEmpty()){
+            Logger.warn("");
+            Logger.warn("Looks like this is a new bot!");
+            Logger.warn("Please open the following link in your browser to invite the bot:");
+            INSTANCE.getLogger().warning(getBot().getInviteUrl(getPermissions()));
         }
     }
 
@@ -75,11 +86,13 @@ public class bot {
     }
 
     public static void SendStartup() {
+        if(getBot().getGuilds().isEmpty()) return;
         EmbedBuilder eb = new EmbedBuilder().setDescription("Server started!").setColor(Color.GREEN);
         Objects.requireNonNull(jda.getTextChannelById(INSTANCE.getConfig().getLong("chatChannel"))).sendMessage(eb.build()).queue();
     }
 
     public static void SendShutdown() {
+        if(getBot().getGuilds().isEmpty()) return;
         EmbedBuilder eb = new EmbedBuilder().setDescription("Server stopped!").setColor(Color.RED);
         Objects.requireNonNull(jda.getTextChannelById(INSTANCE.getConfig().getLong("chatChannel"))).sendMessage(eb.build()).queue();
     }
@@ -107,6 +120,23 @@ public class bot {
                 new HelpCommand(),
                 new WhitelistCommand(),
                 new ListCommand()
+        );
+    }
+
+    public static List<Permission> getPermissions() {
+        return Arrays.asList(
+                Permission.MESSAGE_ADD_REACTION,
+                Permission.MESSAGE_WRITE,
+                Permission.MESSAGE_TTS,
+                Permission.MESSAGE_MANAGE,
+                Permission.MESSAGE_EMBED_LINKS,
+                Permission.MESSAGE_ATTACH_FILES,
+                Permission.MESSAGE_HISTORY,
+                Permission.MESSAGE_MENTION_EVERYONE,
+                Permission.CREATE_INSTANT_INVITE,
+                Permission.MANAGE_CHANNEL,
+                Permission.MANAGE_WEBHOOKS,
+                Permission.VIEW_CHANNEL
         );
     }
 }
