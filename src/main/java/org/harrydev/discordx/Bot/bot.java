@@ -12,6 +12,7 @@ import org.harrydev.discordx.Utils.Logger;
 
 import javax.security.auth.login.LoginException;
 import java.awt.*;
+import java.io.InterruptedIOException;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
@@ -53,6 +54,7 @@ public class bot {
         SendShutdown();
         getListeners().forEach(jda::removeEventListener);
         jda.shutdown();
+
     }
 
     public static void restart() {

@@ -40,6 +40,7 @@ repositories {
 }
 
 dependencies {
+    implementation 'org.apache.maven:maven-artifact:3.6.3'
     compileOnly 'org.spigotmc:spigot-api:1.12-R0.1-SNAPSHOT'
     compile ("net.dv8tion:JDA:${project.jdaVersion}") {
         exclude module: 'opus-java'
@@ -59,6 +60,7 @@ jar {
 }
 
 shadowJar {
+    relocate('org.apache.maven', 'org.harrydev.discordx.shaded.maven')
     archiveFileName = findProperty("plugin-name") + " v" + findProperty("version") + ".jar"
 }
 
