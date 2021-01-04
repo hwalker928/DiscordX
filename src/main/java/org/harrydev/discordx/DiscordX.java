@@ -9,6 +9,8 @@ import org.harrydev.discordx.Bot.bot;
 import org.harrydev.discordx.Commands.AbstractCommand;
 import org.harrydev.discordx.Commands.commands.*;
 import org.harrydev.discordx.Events.EventManager;
+import org.harrydev.discordx.Extentions.loader.DiscordXExtensionLoader;
+import org.harrydev.discordx.Extentions.loader.ExtensionLoader;
 import org.harrydev.discordx.Utils.Logger;
 import org.harrydev.discordx.Utils.Metrics;
 import org.harrydev.discordx.Utils.UpdateChecker;
@@ -25,6 +27,7 @@ public final class DiscordX extends JavaPlugin {
     private static DiscordX instance;
     private API api;
     private Config config;
+    private final ExtensionLoader loader = new DiscordXExtensionLoader();
 
     @Override
     public void onEnable() {
@@ -38,8 +41,23 @@ public final class DiscordX extends JavaPlugin {
         Bukkit.getServicesManager().register(DiscordXAPI.class,api,this, ServicePriority.Highest);
         EventManager.register();
         this.getCommands().forEach(AbstractCommand::register);
+        loadExtensions();
 
         Bukkit.getScheduler().runTaskLater(this, DiscordX::postLoad, 1);
+    }
+
+    private void loadExtensions() {
+        Logger.info("Loading Extensions");
+        getExtensionLoader().loadExtensions();
+
+        if(getExtensionLoader().getLoadedExtensions().isEmpty()) {
+            Logger.info("&cNo extensions found");
+        } else {
+            Logger.info("Loaded Extensions:");
+            getExtensionLoader().getLoadedExtensions().forEach((extension) -> {
+                Logger.info("- " + extension.getName() + " v" + extension.getVersion());
+            });
+        }
     }
 
 
@@ -85,6 +103,10 @@ public final class DiscordX extends JavaPlugin {
     }
     public static DiscordX getInstance() {
         return instance;
+    }
+
+    public ExtensionLoader getExtensionLoader() {
+        return loader;
     }
 
     public List<AbstractCommand> getCommands() {
