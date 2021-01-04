@@ -50,7 +50,19 @@ public class bot {
         if(!CheckToken(Token)) {
             return;
         }
-        jda.shutdownNow();
+        SendShutdown();
+        getListeners().forEach(jda::removeEventListener);
+        jda.shutdown();
+    }
+
+    public static void restart() {
+        if(!CheckToken(Token)) {
+            return;
+        }
+        SendShutdown();
+        getListeners().forEach(jda::removeEventListener);
+        jda.shutdown();
+        Start();
     }
 
     public static JDA getBot() {
@@ -69,15 +81,6 @@ public class bot {
     public static void SendShutdown() {
         EmbedBuilder eb = new EmbedBuilder().setDescription("Server stopped!").setColor(Color.RED);
         Objects.requireNonNull(jda.getTextChannelById(INSTANCE.getConfig().getLong("chatChannel"))).sendMessage(eb.build()).queue();
-        new java.util.Timer().schedule(
-                new java.util.TimerTask() {
-                    @Override
-                    public void run() {
-                        shutdown();
-                    }
-                },
-                2500
-        );
     }
 
     public static boolean CheckToken(String Token) {

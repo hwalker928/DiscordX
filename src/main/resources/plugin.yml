@@ -18,10 +18,16 @@ commands:
     description: Sends a Command list in console
     usage: /dxdebug
     permission: discordx.debug
+  dxreload:
+    description: Reloads the config and restarts the discord bot
+    usage: /dxreload
+    permission: discordx.reload
 permissions:
   discordx.discord:
     default: true
   discordx.about:
     default: true
   discordx.debug:
+    default: op
+  discordx.reload:
     default: op

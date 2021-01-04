@@ -7,6 +7,7 @@ import org.bukkit.plugin.ServicePriority;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.harrydev.discordx.Bot.bot;
 import org.harrydev.discordx.Commands.AbstractCommand;
+import org.harrydev.discordx.Commands.commands.DiscordReloadCommand;
 import org.harrydev.discordx.Commands.commands.DxdebugCommand;
 import org.harrydev.discordx.Commands.commands.DiscordCommand;
 import org.harrydev.discordx.Commands.commands.DiscordXCommand;
@@ -47,10 +48,14 @@ public final class DiscordX extends JavaPlugin {
         return config.getConfig();
     }
 
+    public Config getRawConfig() {
+        return config;
+    }
+
     @Override
     public void onDisable() {
         if(bot.tokenIsValid) {
-            bot.SendShutdown();
+            bot.shutdown();
         }
         getLogger().info("Goodbye!");
     }
@@ -67,7 +72,8 @@ public final class DiscordX extends JavaPlugin {
         return Arrays.asList(
                 new DiscordCommand(),
                 new DiscordXCommand(),
-                new DxdebugCommand()
+                new DxdebugCommand(),
+                new DiscordReloadCommand()
         );
     }
 }
