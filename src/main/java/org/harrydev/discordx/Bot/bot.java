@@ -12,7 +12,6 @@ import org.harrydev.discordx.Utils.Logger;
 
 import javax.security.auth.login.LoginException;
 import java.awt.*;
-import java.io.InterruptedIOException;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
@@ -35,7 +34,6 @@ public class bot {
         JDABuilder jdaBuilder = JDABuilder.createDefault(Token);
 
         try {
-            jdaBuilder.addEventListeners(new DiscordMessage());
             getListeners().forEach(jdaBuilder::addEventListeners);
             jdaBuilder.setActivity(Activity.playing("Minecraft"));
             jda = jdaBuilder.build();
@@ -47,6 +45,7 @@ public class bot {
             Logger.error(e.toString());
         }
     }
+
     public static void shutdown() {
         if(!CheckToken(Token)) {
             return;
@@ -102,6 +101,7 @@ public class bot {
 
     public static List<ListenerAdapter> getListeners() {
         return Arrays.asList(
+                new DiscordMessage(),
                 new PingCommand(),
                 new ServerCommand(),
                 new HelpCommand(),

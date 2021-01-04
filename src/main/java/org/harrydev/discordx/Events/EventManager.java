@@ -5,6 +5,7 @@ import org.harrydev.discordx.Bot.bot;
 import org.harrydev.discordx.DiscordX;
 import org.harrydev.discordx.Utils.Lag;
 import org.harrydev.discordx.Utils.Logger;
+import org.harrydev.discordx.Utils.OnlinePlayerCheck;
 
 public class EventManager {
     public static void register() {
@@ -14,6 +15,7 @@ public class EventManager {
 
         Logger.info("Registering Events...");
         Bukkit.getScheduler().scheduleSyncRepeatingTask(DiscordX.getInstance(), new Lag(), 100L, 1L);
+        Bukkit.getScheduler().scheduleSyncRepeatingTask(DiscordX.getInstance(), new OnlinePlayerCheck(), 0, 12000);
         Bukkit.getPluginManager().registerEvents(new JoinLeaveEvent(), DiscordX.getInstance());
         Bukkit.getPluginManager().registerEvents(new DeathEvent(), DiscordX.getInstance());
         Bukkit.getPluginManager().registerEvents(new MessageEvent(), DiscordX.getInstance());

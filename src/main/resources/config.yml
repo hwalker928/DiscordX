@@ -1,6 +1,7 @@
 botToken: TokenGoesHere
 botPrefix: '!'
 chatChannel: 000000000000000000
+serverPlayerList: 000000000000000000
 
 serverIP: play.example.com
 prefix: '&7[&b&lDiscord&7]&r'
