@@ -118,7 +118,6 @@ public class bot {
                 new PingCommand(),
                 new ServerCommand(),
                 new HelpCommand(),
-                new WhitelistCommand(),
                 new ListCommand()
         );
     }
