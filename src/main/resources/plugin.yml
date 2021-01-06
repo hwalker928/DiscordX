@@ -1,10 +1,10 @@
 name: DiscordX
-version: 1.0.2
+version: 1.0.3
 main: org.harrydev.discordx.DiscordX
 authors: [ harrydev, Jpuf ]
 description: A plugin to link your Minecraft Server to Discord
 website: https://harrydev.tech
-
+softdepend: [PlaceholderAPI]
 commands:
   discord:
     description: Creates and stores an invite to the discord server

@@ -37,6 +37,9 @@ repositories {
         name = 'lombok'
         url = 'http://projectlombok.org/mavenrepo'
     }
+    maven {
+        url = 'https://repo.extendedclip.com/content/repositories/placeholderapi/'
+    }
 }
 
 dependencies {
@@ -48,6 +51,7 @@ dependencies {
     }
     compile("club.minnced:discord-webhooks:${project.webhookVersion}")
     compile("org.projectlombok:lombok:0.9.2")
+    compileOnly 'me.clip:placeholderapi:2.10.9'
 }
 
 processResources {
@@ -57,13 +61,13 @@ processResources {
 }
 
 jar {
-    archiveFileName = findProperty("plugin-name") + " v" + findProperty("version") + " " + "unshaded" + ".jar"
+    archiveFileName = findProperty("plugin-name") + " -v" + findProperty("version") + " " + "unshaded" + ".jar"
 }
 
 shadowJar {
     relocate('org.jetbrains', 'org.harrydev.discordx.shaded.jetbrains')
     relocate('org.apache.maven', 'org.harrydev.discordx.shaded.maven')
-    archiveFileName = findProperty("plugin-name") + " v" + findProperty("version") + ".jar"
+    archiveFileName = findProperty("plugin-name") + "-v" + findProperty("version") + ".jar"
 }
 
 tasks.withType(Jar) {
