@@ -14,6 +14,7 @@ public class HelpCommand extends ListenerAdapter {
     @Override
     public void onMessageReceived(MessageReceivedEvent e) {
         if (e.getMessage().getContentRaw().equals(bot.getPrefix() + "help")) {
+            commands = "";
             bot.getListeners().forEach(listener -> {
                 commands += "`" + listener.getClass().getSimpleName().replaceAll("Command", "") + "`\n";
             });
