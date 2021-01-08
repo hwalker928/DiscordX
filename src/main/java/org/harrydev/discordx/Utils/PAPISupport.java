@@ -43,7 +43,8 @@ public class PAPISupport extends PlaceholderExpansion {
 
         // %someplugin_placeholder1%
         if(identifier.equals("members")){
-            return String.valueOf((long) bot.getBot().getUsers().size());
+            return "Coming soon";
+            //return String.valueOf((long) bot.getBot().getUsers().size());
             //return "pog";
         }
 
