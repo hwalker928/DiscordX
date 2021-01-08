@@ -38,7 +38,7 @@ public class bot {
         try {
             getListeners().forEach(jdaBuilder::addEventListeners);
             jdaBuilder.setActivity(Activity.playing("Minecraft"));
-            jdaBuilder.enableIntents(GatewayIntent.GUILD_MEMBERS);
+            //jdaBuilder.enableIntents(GatewayIntent.GUILD_MEMBERS);
             jda = jdaBuilder.build();
             jda.awaitReady();
             Logger.info("The bot has started!");
