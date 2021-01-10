@@ -6,6 +6,7 @@ import net.dv8tion.jda.api.JDABuilder;
 import net.dv8tion.jda.api.Permission;
 import net.dv8tion.jda.api.entities.Activity;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
+import net.dv8tion.jda.api.requests.GatewayIntent;
 import org.harrydev.discordx.Bot.Commands.*;
 import org.harrydev.discordx.Bot.Events.DiscordMessage;
 import org.harrydev.discordx.DiscordX;
@@ -37,6 +38,7 @@ public class bot {
         try {
             getListeners().forEach(jdaBuilder::addEventListeners);
             jdaBuilder.setActivity(Activity.playing("Minecraft"));
+            //jdaBuilder.enableIntents(GatewayIntent.GUILD_MEMBERS);
             jda = jdaBuilder.build();
             jda.awaitReady();
             Logger.info("The bot has started!");
@@ -118,7 +120,6 @@ public class bot {
                 new PingCommand(),
                 new ServerCommand(),
                 new HelpCommand(),
-                new WhitelistCommand(),
                 new ListCommand()
         );
     }

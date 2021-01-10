@@ -13,6 +13,7 @@ import org.harrydev.discordx.Extentions.loader.DiscordXExtensionLoader;
 import org.harrydev.discordx.Extentions.loader.ExtensionLoader;
 import org.harrydev.discordx.Utils.Logger;
 import org.harrydev.discordx.Utils.Metrics;
+import org.harrydev.discordx.Utils.PAPISupport;
 import org.harrydev.discordx.Utils.UpdateChecker;
 import org.harrydev.discordx.api.API;
 import org.harrydev.discordx.api.DiscordXAPI;
@@ -25,7 +26,6 @@ import java.util.List;
 public final class DiscordX extends JavaPlugin {
 
     private static DiscordX instance;
-    private API api;
     private Config config;
     private final ExtensionLoader loader = new DiscordXExtensionLoader();
 
@@ -37,11 +37,12 @@ public final class DiscordX extends JavaPlugin {
         if(!bot.tokenIsValid) {
             Logger.warn("Aborting...");
         }
-        api = new API(bot.getBot());
-        Bukkit.getServicesManager().register(DiscordXAPI.class,api,this, ServicePriority.Highest);
+        API api = new API(bot.getBot());
+        Bukkit.getServicesManager().register(DiscordXAPI.class, api,this, ServicePriority.Highest);
         EventManager.register();
         this.getCommands().forEach(AbstractCommand::register);
         loadExtensions();
+        registerPAPI();
 
         Bukkit.getScheduler().runTaskLater(this, DiscordX::postLoad, 1);
     }
@@ -54,9 +55,17 @@ public final class DiscordX extends JavaPlugin {
             Logger.info("&cNo extensions found");
         } else {
             Logger.info("Loaded Extensions:");
-            getExtensionLoader().getLoadedExtensions().forEach((extension) -> {
-                Logger.info("- " + extension.getName() + " v" + extension.getVersion());
-            });
+            getExtensionLoader().getLoadedExtensions().forEach((extension) -> Logger.info("- " + extension.getName() + " v" + extension.getVersion()));
+        }
+    }
+
+    private void registerPAPI() {
+        if(Bukkit.getPluginManager().getPlugin("PlaceholderAPI") != null){
+            new PAPISupport(this).register();
+            Logger.info("Registered with PlaceHolderAPI.");
+        }
+        else {
+            Logger.warn("PlaceHolderAPI is not detected.");
         }
     }
 
