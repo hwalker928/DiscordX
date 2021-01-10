@@ -125,14 +125,16 @@ public class bot {
 
     public static List<Permission> getPermissions() {
         return Arrays.asList(
-                Permission.MESSAGE_ADD_REACTION,
+                Permission.MESSAGE_READ,
                 Permission.MESSAGE_WRITE,
                 Permission.MESSAGE_TTS,
                 Permission.MESSAGE_MANAGE,
                 Permission.MESSAGE_EMBED_LINKS,
                 Permission.MESSAGE_ATTACH_FILES,
+                Permission.MESSAGE_ADD_REACTION,
                 Permission.MESSAGE_HISTORY,
                 Permission.MESSAGE_MENTION_EVERYONE,
+                Permission.MESSAGE_EXT_EMOJI,
                 Permission.CREATE_INSTANT_INVITE,
                 Permission.MANAGE_CHANNEL,
                 Permission.MANAGE_WEBHOOKS,

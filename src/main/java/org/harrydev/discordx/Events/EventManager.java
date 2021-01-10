@@ -14,8 +14,8 @@ public class EventManager {
         }
 
         Logger.info("Registering Events...");
-        if(!bot.getBot().getGuilds().isEmpty())
-            Bukkit.getScheduler().scheduleSyncRepeatingTask(DiscordX.getInstance(), new OnlinePlayerCheck(), 0, 12000);
+//        if(!bot.getBot().getGuilds().isEmpty())
+//            Bukkit.getScheduler().scheduleSyncRepeatingTask(DiscordX.getInstance(), new OnlinePlayerCheck(), 0, 12000);
         Bukkit.getScheduler().scheduleSyncRepeatingTask(DiscordX.getInstance(), new Lag(), 100L, 1L);
         Bukkit.getPluginManager().registerEvents(new JoinLeaveEvent(), DiscordX.getInstance());
         Bukkit.getPluginManager().registerEvents(new DeathEvent(), DiscordX.getInstance());

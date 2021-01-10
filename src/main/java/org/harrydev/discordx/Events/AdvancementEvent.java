@@ -38,6 +38,7 @@ public class AdvancementEvent implements Listener {
         Matcher keyMatcher = keyPattern.matcher(event.getAdvancement().getKey().getKey());
         String namespace = nameMatcher.replaceAll("");
         String key = keyMatcher.replaceAll("");
+        Logger.info(namespace);
         switch (namespace) {
             case "story":
                 if(!story.valueOf(key).getChallenge()){
@@ -54,7 +55,8 @@ public class AdvancementEvent implements Listener {
                     eb.setAuthor(event.getPlayer().getDisplayName() + " has completed the Challenge " +  nether.valueOf(key).getAdvancement() + "!", null, Avatar);
                 }
                 eb.setDescription(nether.valueOf(key).getDescription());
-                break;
+                eb.setColor(Color.GREEN);
+                textChannel.sendMessage(eb.build()).queue();
             case "end":
                 if(!end.valueOf(key).getChallenge()){
                     eb.setAuthor(event.getPlayer().getDisplayName() + " has completed the Advancement " +  end.valueOf(key).getAdvancement() + "!", null, Avatar);
@@ -62,7 +64,8 @@ public class AdvancementEvent implements Listener {
                     eb.setAuthor(event.getPlayer().getDisplayName() + " has completed the Challenge " +  end.valueOf(key).getAdvancement() + "!", null, Avatar);
                 }
                 eb.setDescription(end.valueOf(key).getDescription());
-                break;
+                eb.setColor(Color.GREEN);
+                textChannel.sendMessage(eb.build()).queue();
             case "adventure":
                 if(!adventure.valueOf(key).getChallenge()){
                     eb.setAuthor(event.getPlayer().getDisplayName() + " has completed the Advancement " +  adventure.valueOf(key).getAdvancement() + "!", null, Avatar);
@@ -70,7 +73,8 @@ public class AdvancementEvent implements Listener {
                     eb.setAuthor(event.getPlayer().getDisplayName() + " has completed the Challenge " +  adventure.valueOf(key).getAdvancement() + "!", null, Avatar);
                 }
                 eb.setDescription(adventure.valueOf(key).getDescription());
-                break;
+                eb.setColor(Color.GREEN);
+                textChannel.sendMessage(eb.build()).queue();
             case "husbandry":
                 if(!husbandry.valueOf(key).getChallenge()){
                     eb.setAuthor(event.getPlayer().getDisplayName() + " has completed the Advancement " +  husbandry.valueOf(key).getAdvancement() + "!", null, Avatar);
@@ -78,10 +82,8 @@ public class AdvancementEvent implements Listener {
                     eb.setAuthor(event.getPlayer().getDisplayName() + " has completed the Challenge " +  husbandry.valueOf(key).getAdvancement() + "!", null, Avatar);
                 }
                 eb.setDescription(husbandry.valueOf(key).getDescription());
-                break;
+                eb.setColor(Color.GREEN);
+                textChannel.sendMessage(eb.build()).queue();
         }
-
-        eb.setColor(Color.GREEN);
-        textChannel.sendMessage(eb.build()).queue();
     }
 }
