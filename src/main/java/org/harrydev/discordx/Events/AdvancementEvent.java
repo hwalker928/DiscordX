@@ -38,7 +38,6 @@ public class AdvancementEvent implements Listener {
         Matcher keyMatcher = keyPattern.matcher(event.getAdvancement().getKey().getKey());
         String namespace = nameMatcher.replaceAll("");
         String key = keyMatcher.replaceAll("");
-        Logger.info(namespace);
         switch (namespace) {
             case "story":
                 if(!story.valueOf(key).getChallenge()){

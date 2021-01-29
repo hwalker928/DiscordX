@@ -20,19 +20,19 @@ public class EventManager {
         Bukkit.getPluginManager().registerEvents(new JoinLeaveEvent(), DiscordX.getInstance());
         Bukkit.getPluginManager().registerEvents(new DeathEvent(), DiscordX.getInstance());
         Bukkit.getPluginManager().registerEvents(new MessageEvent(), DiscordX.getInstance());
-        try {
-            Class<?> achievementAwardedEventClass = Class.forName("org.bukkit.event.player.PlayerAchievementAwardedEvent");
-            if(achievementAwardedEventClass.isAnnotationPresent(Deprecated.class)) return;
-            Logger.error("§4§l====================================");
-            Logger.error("");
-            Logger.error("§4§lYou are using a unsupported version");
-            Logger.error("§4§lAchievement events will not work and have been disabled");
-            Logger.error("§4§lEverything should work as normal.");
-            Logger.error("");
-            Logger.error("§4l====================================");
+        //try {
+        //    Class<?> achievementAwardedEventClass = Class.forName("org.bukkit.event.player.PlayerAchievementAwardedEvent");
+        //    if(achievementAwardedEventClass.isAnnotationPresent(Deprecated.class)) return;
+        //    Logger.error("§4§l====================================");
+        //    Logger.error("");
+         //   Logger.error("§4§lYou are using a unsupported version");
+         //   Logger.error("§4§lAchievement events will not work and have been disabled");
+         //   Logger.error("§4§lEverything should work as normal.");
+        //    Logger.error("");
+         //   Logger.error("§4l====================================");
 
-        } catch (ClassNotFoundException e) {
-            Bukkit.getPluginManager().registerEvents(new AdvancementEvent(bot.getBot()), DiscordX.getInstance());
-        }
+        //} catch (ClassNotFoundException e) {
+         ///   Bukkit.getPluginManager().registerEvents(new AdvancementEvent(bot.getBot()), DiscordX.getInstance());
+        //}
     }
 }
