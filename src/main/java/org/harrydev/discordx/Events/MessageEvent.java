@@ -1,6 +1,7 @@
 package org.harrydev.discordx.Events;
 
 import net.dv8tion.jda.api.entities.TextChannel;
+import org.bukkit.ChatColor;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -22,5 +23,12 @@ public class MessageEvent implements Listener {
         Player player = event.getPlayer();
         String Avatar = "https://cravatar.eu/helmavatar/"+event.getPlayer().getName()+"/256.png";
         String message = event.getMessage();
+
+        if (message.contains("@everyone") || message.contains("@here")) {
+            event.setCancelled(true);
+            player.sendMessage(ChatColor.translateAlternateColorCodes('&', config.getString("nopingmsg").replace("%prefix%", config.getString("prefix")).replace("%player%", player.getName())));
+            return;
+        }
+
         textChannel.sendMessage(Objects.requireNonNull(config.getString("minecraftToDiscord")).replace("%player%", event.getPlayer().getName()).replace("%message%", event.getMessage()).replace("%prefix%", config.getString("prefix"))).queue();    }
 }
