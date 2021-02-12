@@ -3,6 +3,11 @@ A plugin to link minecraft servers with discord.
 
 You can find the wiki [here](https://docs.harrydev.me/discordx).
 
+<div align="left">
+    <a target="_blank" href="https://harrydev.me/discord" title="Join our Discord!">
+        <img  src="https://discordapp.com/api/guilds/738451951758606336/widget.png?style=banner2" height="76px" draggable="false" alt="Join our Discord!">
+    </a>
+</div>
 
 # Features
 - 2-way chat link
