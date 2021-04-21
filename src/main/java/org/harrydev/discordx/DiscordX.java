@@ -48,11 +48,11 @@ public final class DiscordX extends JavaPlugin {
     }
 
     private void loadExtensions() {
-        Logger.info("Loading Extensions");
+        //Logger.info("Loading Extensions");
         getExtensionLoader().loadExtensions();
 
         if(getExtensionLoader().getLoadedExtensions().isEmpty()) {
-            Logger.info("&cNo extensions found");
+            //Logger.info("&cNo extensions found");
         } else {
             Logger.info("Loaded Extensions:");
             getExtensionLoader().getLoadedExtensions().forEach((extension) -> Logger.info("- " + extension.getName() + " v" + extension.getVersion()));

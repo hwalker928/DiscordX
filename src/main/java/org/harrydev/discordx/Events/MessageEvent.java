@@ -5,6 +5,7 @@ import org.bukkit.ChatColor;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
 import org.harrydev.discordx.Bot.bot;
@@ -18,7 +19,7 @@ public class MessageEvent implements Listener {
     TextChannel textChannel = bot.getBot().getTextChannelById(INSTANCE.getConfig().getLong("chatChannel"));
     FileConfiguration config = INSTANCE.getConfig();
 
-    @EventHandler
+    @EventHandler(priority = EventPriority.HIGHEST)
     public void OnPlayerMessage(AsyncPlayerChatEvent event) {
         Player player = event.getPlayer();
         String Avatar = "https://cravatar.eu/helmavatar/"+event.getPlayer().getName()+"/256.png";
@@ -29,6 +30,6 @@ public class MessageEvent implements Listener {
             player.sendMessage(ChatColor.translateAlternateColorCodes('&', config.getString("nopingmsg").replace("%prefix%", config.getString("prefix")).replace("%player%", player.getName())));
             return;
         }
-
+        if(event.isCancelled())return;
         textChannel.sendMessage(Objects.requireNonNull(config.getString("minecraftToDiscord")).replace("%player%", event.getPlayer().getName()).replace("%message%", event.getMessage()).replace("%prefix%", config.getString("prefix"))).queue();    }
 }
