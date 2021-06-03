@@ -15,7 +15,7 @@ public class Hastebin {
         byte[] postData = text.getBytes(StandardCharsets.UTF_8);
         int postDataLength = postData.length;
 
-        String requestURL = "https://paste.harrydev.me/documents";
+        String requestURL = "https://bin.tvhg.club/documents";
         URL url = new URL(requestURL);
         HttpsURLConnection conn = (HttpsURLConnection) url.openConnection();
         conn.setDoOutput(true);
@@ -40,7 +40,7 @@ public class Hastebin {
         if (response.contains("\"key\"")) {
             response = response.substring(response.indexOf(":") + 2, response.length() - 2);
 
-            String postURL = raw ? "https://paste.harrydev.me/raw/" : "https://paste.harrydev.me/";
+            String postURL = raw ? "https://bin.tvhg.club/raw/" : "https://bin.tvhg.club/";
             response = postURL + response;
         }
 

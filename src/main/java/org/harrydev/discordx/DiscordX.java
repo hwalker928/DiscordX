@@ -41,19 +41,16 @@ public final class DiscordX extends JavaPlugin {
         Bukkit.getServicesManager().register(DiscordXAPI.class, api,this, ServicePriority.Highest);
         EventManager.register();
         this.getCommands().forEach(AbstractCommand::register);
-        loadExtensions();
+        //loadExtensions();
         registerPAPI();
 
-        Bukkit.getScheduler().runTaskLater(this, DiscordX::postLoad, 1);
+        Bukkit.getScheduler().runTaskLater(this, DiscordX::postLoad, 60);
     }
 
     private void loadExtensions() {
-        //Logger.info("Loading Extensions");
         getExtensionLoader().loadExtensions();
 
-        if(getExtensionLoader().getLoadedExtensions().isEmpty()) {
-            //Logger.info("&cNo extensions found");
-        } else {
+        if(!(getExtensionLoader().getLoadedExtensions().isEmpty())) {
             Logger.info("Loaded Extensions:");
             getExtensionLoader().getLoadedExtensions().forEach((extension) -> Logger.info("- " + extension.getName() + " v" + extension.getVersion()));
         }
@@ -63,9 +60,6 @@ public final class DiscordX extends JavaPlugin {
         if(Bukkit.getPluginManager().getPlugin("PlaceholderAPI") != null){
             new PAPISupport(this).register();
             Logger.info("Registered with PlaceHolderAPI.");
-        }
-        else {
-            Logger.warn("PlaceHolderAPI is not detected.");
         }
     }
 
@@ -109,6 +103,9 @@ public final class DiscordX extends JavaPlugin {
                 }, 0, 864000);
             }
         });
+        Logger.info("&bLooking for a cheap and powerful Minecraft Server Host?");
+        Logger.info("&aThen checkout &6&lSparked Host&a!");
+        Logger.info("&bhttps://harrydev.me/sparked for 15% off!");
     }
     public static DiscordX getInstance() {
         return instance;
