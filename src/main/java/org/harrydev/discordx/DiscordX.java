@@ -103,9 +103,6 @@ public final class DiscordX extends JavaPlugin {
                 }, 0, 864000);
             }
         });
-        Logger.info("&bLooking for a cheap and powerful Minecraft Server Host?");
-        Logger.info("&aThen checkout &6&lSparked Host&a!");
-        Logger.info("&bhttps://harrydev.me/sparked for 15% off!");
     }
     public static DiscordX getInstance() {
         return instance;
